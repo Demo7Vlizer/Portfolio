@@ -17,9 +17,9 @@ header {
 
 .hero-title {
   font-family: var(--f-display); font-weight: 600;
-  font-size: clamp(3.2rem, 12vw, 9rem); line-height: 0.92; margin-top: var(--sp-6);
+  font-size: clamp(3.2rem, 12vw, 9rem); line-height: 1.05; margin-top: var(--sp-6);
 }
-.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line { display: block; overflow: hidden; padding-bottom: 0.1em; }
 .hero-title .line i { font-style: italic; font-weight: 500; color: var(--accent); }
 .hero-title .line > span {
   display: block; transform: translateY(110%);
