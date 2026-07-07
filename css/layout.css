@@ -1,0 +1,19 @@
+.wrap { width: min(1120px, 90vw); margin-inline: auto; }
+
+/* ---------- top progress bar ---------- */
+.scroll-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
+  transform-origin: left; transform: scaleX(0);
+  background: var(--accent); z-index: 200;
+}
+
+/* ---------- section shell ---------- */
+section { padding-block: var(--sp-24); position: relative; }
+.sec-head { display: flex; align-items: baseline; gap: var(--sp-4); margin-bottom: var(--sp-16); flex-wrap: wrap; }
+.sec-num { font-family: var(--f-mono); font-size: 0.85rem; color: var(--accent); font-weight: 700; }
+.sec-title { font-family: var(--f-display); font-weight: 600; font-size: clamp(2rem, 5vw, 3.4rem); }
+.sec-title em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+/* reveal util */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease-out-quint), transform .8s var(--ease-out-quint); }
+.reveal.in { opacity: 1; transform: none; }
