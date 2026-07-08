@@ -8,7 +8,7 @@
 /* ── Mobile landscape / large phone (≤ 768px) ────────────── */
 
 @media (max-width: 768px) {
-  header {
+  body > header {
     min-height: auto;
     padding-block: calc(var(--sp-24) + 48px) var(--sp-12);
   }
@@ -67,7 +67,7 @@
   .sec-num { font-size: 0.75rem; }
   .sec-title { font-size: clamp(1.75rem, 8vw, 2.4rem); }
 
-  header { padding-block: calc(var(--sp-16) + 44px) var(--sp-8); }
+  body > header { padding-block: calc(var(--sp-16) + 44px) var(--sp-8); }
 
   .blob.a { width: min(280px, 70vw); height: min(280px, 70vw); top: -80px; right: -60px; }
   .blob.b { width: min(220px, 60vw); height: min(220px, 60vw); bottom: -80px; left: -60px; }
@@ -125,14 +125,22 @@ body.menu-open {
 
 body.menu-open .scroll-bar { opacity: 0; }
 
-body.menu-open > *:not(nav) {
+body.menu-open > *:not(nav):not(.profile-lightbox):not(.pdf-viewer) {
   pointer-events: none;
 }
 
+body.profile-open {
+  overflow: hidden;
+}
+
+body.pdf-open {
+  overflow: hidden;
+}
+
 @media (max-width: 720px) {
-  body.menu-open header,
-  body.menu-open section,
-  body.menu-open footer {
+  body.menu-open > header,
+  body.menu-open > section,
+  body.menu-open > footer {
     visibility: hidden;
   }
 }

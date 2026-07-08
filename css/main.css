@@ -4,6 +4,8 @@
 @import url("chrome.css");
 @import url("effects.css");
 @import url("components/nav.css");
+@import url("components/profile.css");
+@import url("components/pdf-viewer.css");
 @import url("components/hero.css");
 @import url("components/about.css");
 @import url("components/timeline.css");

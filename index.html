@@ -18,7 +18,14 @@
   <div class="scroll-bar" id="scrollBar"></div>
 
   <nav id="nav">
-    <div class="brand">Rxx<span>HuL</span> ⟡</div>
+    <div class="nav-brand">
+      <button class="profile-trigger" id="profileTrigger" type="button" aria-label="View profile photo" aria-haspopup="dialog">
+        <span class="profile-orbit" aria-hidden="true"></span>
+        <span class="profile-ring" aria-hidden="true"></span>
+        <img src="assets/Profile_Picture.jpg" alt="" class="profile-img" width="36" height="36" />
+      </button>
+      <div class="brand">Rxx<span>HuL</span> ⟡</div>
+    </div>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <i data-lucide="menu" class="nav-toggle-icon"></i>
     </button>
@@ -30,6 +37,52 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
+
+  <div class="profile-lightbox" id="profileLightbox" aria-hidden="true" role="dialog" aria-label="Profile photo">
+    <div class="profile-lightbox-backdrop" id="profileBackdrop"></div>
+    <div class="profile-lightbox-window" id="profileWindow">
+      <div class="profile-window-header">
+        <div class="profile-window-chrome" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <button class="profile-close" id="profileClose" type="button" aria-label="Close profile photo">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <img src="assets/Profile_Picture.jpg" alt="RxxHuL — profile photo" />
+      <p class="profile-caption">RxxHuL</p>
+    </div>
+  </div>
+
+  <div class="pdf-viewer" id="pdfViewer" aria-hidden="true" role="dialog" aria-label="Document viewer">
+    <div class="pdf-viewer-backdrop" id="pdfBackdrop"></div>
+    <div class="pdf-viewer-panel">
+      <header class="pdf-viewer-bar">
+        <div class="pdf-viewer-bar-left">
+          <span class="pdf-viewer-dot"></span>
+          <h2 class="pdf-viewer-title" id="pdfTitle">Document</h2>
+        </div>
+        <div class="pdf-viewer-actions">
+          <a class="pdf-viewer-download" id="pdfDownload" href="#" download title="Download PDF">
+            <i data-lucide="download"></i>
+            <span>Download</span>
+          </a>
+          <button class="pdf-viewer-close" id="pdfClose" type="button" aria-label="Close document">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </header>
+      <div class="pdf-viewer-body" id="pdfBody">
+        <div class="pdf-loading" id="pdfLoading">
+          <span class="pdf-loading-spin"></span>
+          <span>Loading document…</span>
+        </div>
+        <div class="pdf-pages" id="pdfPages"></div>
+      </div>
+    </div>
+  </div>
 
   <header>
     <div class="blob a" id="blobA"></div>
@@ -133,7 +186,7 @@
           <div class="tl-desc">Where I became a real developer. Built websites and Flutter apps, went deep on GetX, React, Tailwind and backend logic. A full year of shipping.</div>
           <div class="tl-actions">
             <span class="tag-role">Web Dev + Flutter Dev</span>
-            <a class="tl-proof" href="assets/SKM_C226i25031713320(2).pdf" download="Magadh-Tech-Internship-Certificate.pdf" title="Download internship certificate">
+            <a class="tl-proof pdf-link" href="assets/SKM_C226i25031713320(2).pdf" data-pdf-title="Magadh Tech — Internship Certificate" data-pdf-name="Magadh-Tech-Internship-Certificate.pdf" title="View internship certificate">
               <i data-lucide="file-badge"></i>
               <span>Internship Certificate</span>
             </a>
@@ -165,7 +218,7 @@
           <div class="tl-desc">Running sourcing and order execution in the backend process: handling orders end to end and keeping the pipeline moving.</div>
           <div class="tl-actions">
             <span class="tag-role">Sourcing · Order Handling · Backend</span>
-            <a class="tl-proof" href="assets/Amicco_Offer_Letter_Rahul_Kumar.pdf" download="Magadh-Tech-Internship-Certificate.pdf" title="Download internship certificate">
+            <a class="tl-proof pdf-link" href="assets/Amicco_Offer_Letter_Rahul_Kumar.pdf" data-pdf-title="Amicco — Offer Letter" data-pdf-name="Amicco-Offer-Letter-Rahul-Kumar.pdf" title="View offer letter">
               <i data-lucide="file-badge"></i>
               <span>Offer Letter</span>
             </a>
@@ -341,7 +394,7 @@
       <div class="foot-links reveal">
         <a href="https://github.com/Demo7Vlizer" target="_blank" rel="noopener"><i data-lucide="github"></i>github.com/Demo7Vlizer</a>
         <!-- <a href="https://magadh.tech/" target="_blank" rel="noopener"><i data-lucide="briefcase"></i>Ex‑Magadh Tech</a> -->
-        <a href="assets/ATS-Friendly Format_Resume.pdf" download="Rahul-Kumar-Resume.pdf" title="Download resume"><i data-lucide="file-text"></i>Download Resume</a>
+        <a class="pdf-link" href="assets/ATS-Friendly Format_Resume.pdf" data-pdf-title="Resume — ATS Friendly" data-pdf-name="Rahul-Kumar-Resume.pdf" title="View resume"><i data-lucide="file-text"></i>View Resume</a>
         <a href="mailto:mintruik@gmail.com"><i data-lucide="mail"></i>Get in touch</a>
         <a href="https://www.linkedin.com/in/rahul-kumar-81592b273/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i>LinkedIn</a>
         <a href="tel:+918882972812"><i data-lucide="phone"></i>+91 8882972812</a>
@@ -353,9 +406,12 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/effects.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/pdf-viewer.js"></script>
   <script src="js/reveal.js"></script>
   <script src="js/timeline.js"></script>
   <script src="js/stats.js"></script>

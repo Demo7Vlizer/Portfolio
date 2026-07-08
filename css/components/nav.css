@@ -23,7 +23,6 @@ nav.menu-open {
 .brand {
   font-family: var(--f-mono); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em; flex-shrink: 0;
   transition: transform .4s var(--ease-out-quint);
-  position: relative; z-index: 201;
 }
 .brand:hover { transform: scale(1.03); }
 .brand span {
