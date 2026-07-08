@@ -20,9 +20,6 @@
   .tl-what { word-break: break-word; hyphens: auto; }
   .tl-where { word-break: break-word; }
 
-  .skill-row { gap: var(--sp-4); padding: var(--sp-4) var(--sp-2); }
-  .skill-row .name { font-size: clamp(1.25rem, 5vw, 1.8rem); }
-
   .foot-bottom { flex-direction: column; align-items: flex-start; }
 }
 
@@ -40,24 +37,6 @@
   .hero-title { font-size: clamp(2.6rem, 14vw, 4.5rem); }
   .hero-meta { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
   .hero-meta > span:last-child { font-size: 0.72rem; }
-
-  .stats { grid-template-columns: 1fr; gap: var(--sp-6); }
-  .stat .lbl { font-size: 0.68rem; }
-
-  .skill-row {
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: var(--sp-4) 0;
-  }
-  .skill-row .idx { width: 28px; }
-  .skill-row .name { flex: 1 1 calc(100% - 36px); min-width: 0; }
-  .skill-row .kind {
-    flex: 1 1 100%;
-    text-align: left;
-    padding-left: 28px;
-    font-size: 0.68rem;
-  }
-  .skill-row:hover { padding-left: 0; }
 
   .proj-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
   .proj { min-height: auto; padding: var(--sp-4); }
@@ -107,8 +86,6 @@
   .tl-desc { font-size: 0.95rem; max-width: none; }
   .tl-actions { flex-direction: column; align-items: flex-start; }
 
-  .skills-intro { font-size: 0.78rem; margin-bottom: var(--sp-8); }
-
   .foot-big { font-size: clamp(2rem, 10vw, 3.2rem); }
   footer { padding-block: var(--sp-16) var(--sp-8); padding-bottom: max(var(--sp-8), env(safe-area-inset-bottom)); }
 }
@@ -118,7 +95,6 @@
 @media (max-width: 360px) {
   .brand { font-size: 0.85rem; }
   .cta { font-size: 0.75rem; padding: var(--sp-2) var(--sp-4); }
-  .stat .num { font-size: clamp(1.8rem, 12vw, 2.4rem); }
 }
 
 /* ── Large desktop (≥ 1400px) ──────────────────────────── */
@@ -138,4 +114,25 @@
   .skill-row:hover .glow { opacity: 0; }
   .cta:hover { transform: none; }
   .foot-links a:hover { transform: none; }
+}
+
+/* ── Mobile menu open: lock page behind panel ────────────── */
+
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.menu-open .scroll-bar { opacity: 0; }
+
+body.menu-open > *:not(nav) {
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  body.menu-open header,
+  body.menu-open section,
+  body.menu-open footer {
+    visibility: hidden;
+  }
 }

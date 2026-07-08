@@ -6,6 +6,8 @@
 
   const setOpen = (open) => {
     links.classList.toggle('open', open);
+    nav.classList.toggle('menu-open', open);
+    document.body.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', open);
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.style.overflow = open ? 'hidden' : '';

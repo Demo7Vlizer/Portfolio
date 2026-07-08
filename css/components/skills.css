@@ -11,8 +11,13 @@
 .skills-intro { font-family: var(--f-mono); font-size: 0.85rem; color: oklch(72% 0.015 76); max-width: 50ch; margin-bottom: var(--sp-12); }
 .skill-list { display: flex; flex-direction: column; }
 .skill-row {
-  display: flex; align-items: center; gap: var(--sp-6); padding: var(--sp-6) var(--sp-2);
-  border-top: 1px solid oklch(40% 0.02 58); cursor: default; position: relative;
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: var(--sp-3) var(--sp-6);
+  padding: var(--sp-6) var(--sp-2);
+  border-top: 1px solid oklch(40% 0.02 58);
+  cursor: default; position: relative;
   transition: padding-left .45s var(--ease-out-quint), background .4s;
 }
 .skill-row::before {
@@ -21,12 +26,20 @@
   transition: transform .45s var(--ease-out-quint);
 }
 .skill-row:last-child { border-bottom: 1px solid oklch(40% 0.02 58); }
-.skill-row .idx { font-family: var(--f-mono); font-size: 0.75rem; color: oklch(60% 0.02 76); width: 34px; transition: color .35s; }
+.skill-row .idx {
+  font-family: var(--f-mono); font-size: 0.75rem; color: oklch(60% 0.02 76);
+  width: 34px; transition: color .35s; flex-shrink: 0;
+}
 .skill-row .name {
   font-family: var(--f-display); font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 500;
-  transition: color .4s, transform .45s var(--ease-out-quint); flex: 1;
+  transition: color .4s, transform .45s var(--ease-out-quint);
+  min-width: 0; line-height: 1.1;
 }
-.skill-row .kind { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: oklch(65% 0.02 76); text-align: right; transition: color .35s; }
+.skill-row .kind {
+  font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: oklch(65% 0.02 76); text-align: right;
+  transition: color .35s; flex-shrink: 0; white-space: nowrap;
+}
 .skill-row:hover { padding-left: var(--sp-6); background: oklch(30% 0.02 58 / 0.35); }
 .skill-row:hover::before { transform: scaleY(1); }
 .skill-row:hover .idx { color: var(--accent-glow); }
@@ -35,6 +48,42 @@
 .skill-row .glow {
   position: absolute; right: 0; top: 50%; transform: translateY(-50%);
   width: 90px; height: 90px; border-radius: 50%; background: oklch(72% 0.16 40);
-  filter: blur(50px); opacity: 0; transition: opacity .45s;
+  filter: blur(50px); opacity: 0; transition: opacity .45s; pointer-events: none;
 }
 .skill-row:hover .glow { opacity: 0.45; }
+
+/* Keep desktop-style row on tablets & phones */
+@media (max-width: 1024px) {
+  .skill-row { gap: var(--sp-2) var(--sp-4); padding: var(--sp-5) var(--sp-1); }
+  .skill-row .name { font-size: clamp(1.2rem, 3.8vw, 2rem); }
+  .skill-row .kind { font-size: 0.68rem; }
+}
+
+@media (max-width: 768px) {
+  .skill-row {
+    grid-template-columns: 26px 1fr auto;
+    gap: var(--sp-2) var(--sp-3);
+    padding: var(--sp-4) 0;
+  }
+  .skill-row .idx { width: 26px; font-size: 0.68rem; }
+  .skill-row .name { font-size: clamp(1.05rem, 4.2vw, 1.55rem); }
+  .skill-row .kind { font-size: 0.62rem; letter-spacing: 0.05em; }
+  .skill-row:hover { padding-left: var(--sp-2); }
+}
+
+@media (max-width: 480px) {
+  .skills-intro { font-size: 0.78rem; margin-bottom: var(--sp-8); }
+  .skill-row {
+    grid-template-columns: 22px 1fr auto;
+    gap: var(--sp-1) var(--sp-2);
+    padding: var(--sp-3) 0;
+  }
+  .skill-row .idx { width: 22px; font-size: 0.62rem; }
+  .skill-row .name { font-size: clamp(0.92rem, 4vw, 1.25rem); }
+  .skill-row .kind { font-size: 0.55rem; letter-spacing: 0.04em; }
+}
+
+@media (max-width: 360px) {
+  .skill-row .name { font-size: clamp(0.85rem, 3.8vw, 1.1rem); }
+  .skill-row .kind { font-size: 0.5rem; }
+}
