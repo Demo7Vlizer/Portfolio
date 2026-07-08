@@ -20,3 +20,18 @@
 .tl-where a:hover { color: var(--accent); border-color: var(--accent); }
 .tl-desc { color: var(--ink-soft); margin-top: var(--sp-3); max-width: 58ch; font-size: 1.02rem; }
 .tag-role { display: inline-block; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--paper-3); color: var(--ink-soft); padding: 3px 10px; border-radius: 999px; margin-top: var(--sp-3); }
+.tl-actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; margin-top: var(--sp-3); }
+.tl-actions .tag-role { margin-top: 0; }
+.tl-proof {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+  background: color-mix(in oklch, var(--accent) 8%, var(--paper));
+  color: var(--accent); border: 1px solid color-mix(in oklch, var(--accent) 30%, transparent);
+  padding: 3px 12px 3px 10px; border-radius: 999px;
+  transition: background .35s var(--ease-out-quint), color .35s, transform .35s var(--ease-out-quint), border-color .35s, box-shadow .35s;
+}
+.tl-proof i { width: 13px; height: 13px; flex-shrink: 0; }
+.tl-proof:hover {
+  background: var(--accent); color: var(--paper); border-color: var(--accent);
+  transform: translateY(-2px); box-shadow: 0 6px 18px -6px color-mix(in oklch, var(--accent) 50%, transparent);
+}
