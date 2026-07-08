@@ -1,4 +1,4 @@
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--sp-6); }
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--sp-6); }
 .proj {
   border: 1px solid var(--line); border-radius: 14px; padding: var(--sp-6);
   background: var(--paper); display: flex; flex-direction: column; min-height: 220px;

@@ -1,0 +1,141 @@
+/* ── Tablet & below (≤ 1024px) ───────────────────────────── */
+
+@media (max-width: 1024px) {
+  section { padding-block: var(--sp-16); }
+  .sec-head { margin-bottom: var(--sp-12); }
+}
+
+/* ── Mobile landscape / large phone (≤ 768px) ────────────── */
+
+@media (max-width: 768px) {
+  header {
+    min-height: auto;
+    padding-block: calc(var(--sp-24) + 48px) var(--sp-12);
+  }
+
+  .hero-sub { font-size: 1.05rem; max-width: none; }
+  .hero-meta { gap: var(--sp-3) var(--sp-4); font-size: 0.78rem; }
+
+  .tl-item { padding-left: var(--sp-8); padding-bottom: var(--sp-12); }
+  .tl-what { word-break: break-word; hyphens: auto; }
+  .tl-where { word-break: break-word; }
+
+  .skill-row { gap: var(--sp-4); padding: var(--sp-4) var(--sp-2); }
+  .skill-row .name { font-size: clamp(1.25rem, 5vw, 1.8rem); }
+
+  .foot-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── Small mobile (≤ 640px) ──────────────────────────────── */
+
+@media (max-width: 640px) {
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    flex-wrap: wrap;
+    row-gap: var(--sp-2);
+  }
+  .eyebrow::before { width: 24px; }
+
+  .hero-title { font-size: clamp(2.6rem, 14vw, 4.5rem); }
+  .hero-meta { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
+  .hero-meta > span:last-child { font-size: 0.72rem; }
+
+  .stats { grid-template-columns: 1fr; gap: var(--sp-6); }
+  .stat .lbl { font-size: 0.68rem; }
+
+  .skill-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: var(--sp-4) 0;
+  }
+  .skill-row .idx { width: 28px; }
+  .skill-row .name { flex: 1 1 calc(100% - 36px); min-width: 0; }
+  .skill-row .kind {
+    flex: 1 1 100%;
+    text-align: left;
+    padding-left: 28px;
+    font-size: 0.68rem;
+  }
+  .skill-row:hover { padding-left: 0; }
+
+  .proj-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
+  .proj { min-height: auto; padding: var(--sp-4); }
+  .proj-name { font-size: 1.2rem; word-break: break-word; }
+
+  .foot-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+  .foot-links a {
+    justify-content: center;
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .scroll-hint { display: none; }
+}
+
+/* ── Extra small phones (≤ 480px) ──────────────────────── */
+
+@media (max-width: 480px) {
+  section { padding-block: var(--sp-12); }
+  .sec-head { gap: var(--sp-2); margin-bottom: var(--sp-8); }
+  .sec-num { font-size: 0.75rem; }
+  .sec-title { font-size: clamp(1.75rem, 8vw, 2.4rem); }
+
+  header { padding-block: calc(var(--sp-16) + 44px) var(--sp-8); }
+
+  .blob.a { width: min(280px, 70vw); height: min(280px, 70vw); top: -80px; right: -60px; }
+  .blob.b { width: min(220px, 60vw); height: min(220px, 60vw); bottom: -80px; left: -60px; }
+
+  .hero-title { font-size: clamp(2.2rem, 13vw, 3.2rem); margin-top: var(--sp-4); }
+  .hero-sub { font-size: 0.98rem; margin-top: var(--sp-6); }
+  .hero-meta { margin-top: var(--sp-8); }
+
+  .lead { font-size: clamp(1.25rem, 5.5vw, 1.6rem); }
+  .about-body p { font-size: 0.98rem; }
+
+  .tl { margin-left: 4px; }
+  .tl-item { padding-left: var(--sp-6); }
+  .tl-when { font-size: 0.7rem; }
+  .tl-what { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+  .tl-desc { font-size: 0.95rem; max-width: none; }
+  .tl-actions { flex-direction: column; align-items: flex-start; }
+
+  .skills-intro { font-size: 0.78rem; margin-bottom: var(--sp-8); }
+
+  .foot-big { font-size: clamp(2rem, 10vw, 3.2rem); }
+  footer { padding-block: var(--sp-16) var(--sp-8); padding-bottom: max(var(--sp-8), env(safe-area-inset-bottom)); }
+}
+
+/* ── Very narrow (≤ 360px) ───────────────────────────────── */
+
+@media (max-width: 360px) {
+  .brand { font-size: 0.85rem; }
+  .cta { font-size: 0.75rem; padding: var(--sp-2) var(--sp-4); }
+  .stat .num { font-size: clamp(1.8rem, 12vw, 2.4rem); }
+}
+
+/* ── Large desktop (≥ 1400px) ──────────────────────────── */
+
+@media (min-width: 1400px) {
+  .wrap { width: min(1200px, calc(100vw - var(--sp-24))); }
+  .hero-sub { font-size: 1.2rem; }
+  .proj-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Touch devices: reduce hover-dependent shifts ────────── */
+
+@media (hover: none) {
+  .proj:hover { transform: none; box-shadow: none; }
+  .skill-row:hover { padding-left: var(--sp-2); }
+  .skill-row:hover .name { color: inherit; }
+  .skill-row:hover .glow { opacity: 0; }
+  .cta:hover { transform: none; }
+  .foot-links a:hover { transform: none; }
+}

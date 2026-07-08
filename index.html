@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>RxxHuL — Flutter, Backend & Web Developer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +19,10 @@
 
   <nav id="nav">
     <div class="brand">Rxx<span>HuL</span> ⟡</div>
-    <div class="nav-links">
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <i data-lucide="menu" class="nav-toggle-icon"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#journey">Journey</a>
       <a href="#skills">Skills</a>
@@ -351,6 +354,7 @@
   </footer>
 
   <script src="js/scroll.js"></script>
+  <script src="js/nav.js"></script>
   <script src="js/reveal.js"></script>
   <script src="js/timeline.js"></script>
   <script src="js/stats.js"></script>
