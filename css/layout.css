@@ -4,7 +4,9 @@
 .scroll-bar {
   position: fixed; top: 0; left: 0; height: 3px; width: 100%;
   transform-origin: left; transform: scaleX(0);
-  background: var(--accent); z-index: 200;
+  background: linear-gradient(90deg, var(--accent-deep), var(--accent), var(--accent-glow));
+  z-index: 200;
+  box-shadow: 0 0 12px color-mix(in oklch, var(--accent) 50%, transparent);
 }
 
 /* ---------- section shell ---------- */
@@ -17,3 +19,14 @@ section { padding-block: var(--sp-24); position: relative; }
 /* reveal util */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease-out-quint), transform .8s var(--ease-out-quint); }
 .reveal.in { opacity: 1; transform: none; }
+
+/* stagger children inside grids/lists */
+.proj-grid .reveal.in:nth-child(1) { transition-delay: 0ms; }
+.proj-grid .reveal.in:nth-child(2) { transition-delay: 80ms; }
+.proj-grid .reveal.in:nth-child(3) { transition-delay: 160ms; }
+.proj-grid .reveal.in:nth-child(4) { transition-delay: 240ms; }
+.proj-grid .reveal.in:nth-child(5) { transition-delay: 320ms; }
+.proj-grid .reveal.in:nth-child(6) { transition-delay: 400ms; }
+
+.skill-list .reveal.in:nth-child(odd) { transition-delay: 0ms; }
+.skill-list .reveal.in:nth-child(even) { transition-delay: 60ms; }

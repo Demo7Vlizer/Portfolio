@@ -1,4 +1,10 @@
-#skills { background: var(--ink); color: var(--paper); }
+#skills { background: var(--ink); color: var(--paper); position: relative; overflow: hidden; }
+#skills::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 40% at 80% 20%, oklch(72% 0.16 40 / 0.08), transparent 60%),
+              radial-gradient(ellipse 50% 50% at 10% 80%, oklch(62% 0.07 168 / 0.06), transparent 55%);
+}
+#skills .wrap { position: relative; z-index: 1; }
 #skills .sec-num { color: oklch(72% 0.16 40); }
 #skills .sec-title { color: var(--paper); }
 #skills .sec-title em { color: oklch(72% 0.16 40); }
@@ -7,13 +13,28 @@
 .skill-row {
   display: flex; align-items: center; gap: var(--sp-6); padding: var(--sp-6) var(--sp-2);
   border-top: 1px solid oklch(40% 0.02 58); cursor: default; position: relative;
-  transition: padding-left .45s var(--ease-out-quint);
+  transition: padding-left .45s var(--ease-out-quint), background .4s;
+}
+.skill-row::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--accent-glow); transform: scaleY(0); transform-origin: top;
+  transition: transform .45s var(--ease-out-quint);
 }
 .skill-row:last-child { border-bottom: 1px solid oklch(40% 0.02 58); }
-.skill-row .idx { font-family: var(--f-mono); font-size: 0.75rem; color: oklch(60% 0.02 76); width: 34px; }
-.skill-row .name { font-family: var(--f-display); font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 500; transition: color .4s, transform .45s var(--ease-out-quint); flex: 1; }
-.skill-row .kind { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: oklch(65% 0.02 76); text-align: right; }
-.skill-row:hover { padding-left: var(--sp-6); }
-.skill-row:hover .name { color: oklch(72% 0.16 40); }
-.skill-row .glow { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 90px; height: 90px; border-radius: 50%; background: oklch(72% 0.16 40); filter: blur(50px); opacity: 0; transition: opacity .45s; }
-.skill-row:hover .glow { opacity: 0.4; }
+.skill-row .idx { font-family: var(--f-mono); font-size: 0.75rem; color: oklch(60% 0.02 76); width: 34px; transition: color .35s; }
+.skill-row .name {
+  font-family: var(--f-display); font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 500;
+  transition: color .4s, transform .45s var(--ease-out-quint); flex: 1;
+}
+.skill-row .kind { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: oklch(65% 0.02 76); text-align: right; transition: color .35s; }
+.skill-row:hover { padding-left: var(--sp-6); background: oklch(30% 0.02 58 / 0.35); }
+.skill-row:hover::before { transform: scaleY(1); }
+.skill-row:hover .idx { color: var(--accent-glow); }
+.skill-row:hover .name { color: oklch(72% 0.16 40); transform: translateX(4px); }
+.skill-row:hover .kind { color: oklch(78% 0.02 76); }
+.skill-row .glow {
+  position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 90px; height: 90px; border-radius: 50%; background: oklch(72% 0.16 40);
+  filter: blur(50px); opacity: 0; transition: opacity .45s;
+}
+.skill-row:hover .glow { opacity: 0.45; }

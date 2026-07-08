@@ -3,24 +3,44 @@ header {
   position: relative; padding-block: var(--sp-24) var(--sp-16); overflow: hidden;
 }
 .blob {
-  position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5;
-  will-change: transform; pointer-events: none;
+  position: absolute; border-radius: 50%; pointer-events: none;
+  will-change: transform, opacity, filter;
+  animation: blobBreathe 14s ease-in-out infinite;
 }
-.blob.a { width: 480px; height: 480px; background: oklch(72% 0.16 40); top: -120px; right: -80px; }
-.blob.b { width: 420px; height: 420px; background: oklch(70% 0.12 168); bottom: -140px; left: -100px; opacity: 0.35; }
+.blob.a {
+  width: 480px; height: 480px; background: oklch(72% 0.16 40);
+  top: -120px; right: -80px;
+  transform: translate(var(--mouse-x), calc(var(--blob-a-y) + var(--mouse-y)));
+}
+.blob.b {
+  width: 420px; height: 420px; background: oklch(70% 0.12 168);
+  bottom: -140px; left: -100px; opacity: 0.35;
+  animation-delay: -7s;
+  transform: translate(calc(var(--mouse-x) * -0.6), var(--blob-b-y));
+}
 
 .eyebrow {
   font-family: var(--f-mono); font-size: 0.8rem; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: var(--sp-3);
 }
-.eyebrow::before { content: ""; width: 32px; height: 1.5px; background: var(--accent); display: inline-block; }
+.eyebrow::before {
+  content: ""; width: 32px; height: 1.5px; background: var(--accent); display: inline-block;
+  animation: eyebrowGrow 1s var(--ease-out-expo) 0.2s both;
+}
+@keyframes eyebrowGrow { from { width: 0; opacity: 0; } to { width: 32px; opacity: 1; } }
 
 .hero-title {
   font-family: var(--f-display); font-weight: 600;
   font-size: clamp(3.2rem, 12vw, 9rem); line-height: 1.05; margin-top: var(--sp-6);
 }
 .hero-title .line { display: block; overflow: hidden; padding-bottom: 0.1em; }
-.hero-title .line i { font-style: italic; font-weight: 500; color: var(--accent); }
+.hero-title .line i {
+  font-style: italic; font-weight: 500;
+  background: linear-gradient(120deg, var(--accent), var(--accent-glow), var(--accent-deep));
+  background-size: 200% 200%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
 .hero-title .line > span {
   display: block; transform: translateY(110%);
   animation: rise 1s var(--ease-out-expo) forwards;
@@ -39,23 +59,38 @@ header {
   font-family: var(--f-mono); font-size: 0.82rem; color: var(--ink-soft);
   opacity: 0; animation: fade .9s var(--ease-out-quint) .68s forwards;
 }
-.hero-meta .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--forest); display: inline-block; margin-right: 8px; box-shadow: 0 0 0 4px oklch(62% 0.07 168 / 0.2); }
+.hero-meta .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--forest);
+  display: inline-block; margin-right: 8px;
+  animation: pulseRing 2.4s ease-in-out infinite;
+}
 
 .cta {
   display: inline-flex; align-items: center; gap: var(--sp-2);
   background: var(--ink); color: var(--paper); font-family: var(--f-mono); font-size: 0.82rem;
-  padding: var(--sp-3) var(--sp-6); border-radius: 999px;
-  transition: transform .35s var(--ease-out-quint), background .35s;
+  padding: var(--sp-3) var(--sp-6); border-radius: 999px; position: relative; overflow: hidden;
+  transition: transform .35s var(--ease-out-quint), background .35s, box-shadow .35s;
+  box-shadow: 0 4px 14px -4px oklch(23% 0.024 58 / 0.4);
 }
-.cta:hover { transform: translateY(-3px); background: var(--accent); }
-.cta i { width: 15px; height: 15px; transition: transform .35s var(--ease-out-quint); }
+.cta::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(105deg, transparent 40%, oklch(100% 0 0 / 0.12) 50%, transparent 60%);
+  transform: translateX(-120%) skewX(-12deg);
+  transition: none;
+}
+.cta:hover::before { animation: shimmer 0.7s var(--ease-out-quint); }
+.cta:hover {
+  transform: translateY(-3px); background: var(--accent);
+  box-shadow: var(--shadow-glow);
+}
+.cta i { width: 15px; height: 15px; transition: transform .35s var(--ease-out-quint); position: relative; z-index: 1; }
 .cta:hover i { transform: translate(2px, -2px); }
 
 .scroll-hint {
   position: absolute; bottom: var(--sp-8); left: max(var(--sp-6), 5vw);
   font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--ink-faint); display: flex; align-items: center; gap: var(--sp-2);
-  opacity: 0; animation: fade 1s 1.1s forwards;
+  opacity: 0; animation: fade 1s 1.1s forwards, floatY 3s ease-in-out 2s infinite;
 }
 .scroll-hint .bar { width: 1px; height: 34px; background: var(--line-strong); position: relative; overflow: hidden; }
 .scroll-hint .bar::after { content: ""; position: absolute; inset: 0; background: var(--accent); animation: drop 1.8s var(--ease-out-quint) infinite; }

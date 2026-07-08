@@ -8,9 +8,22 @@ nav {
   border-bottom: 1px solid transparent;
   transition: border-color .4s var(--ease-out-quint), padding .4s var(--ease-out-quint);
 }
-nav.stuck { border-color: var(--line); padding-block: var(--sp-3); padding-top: max(var(--sp-3), env(safe-area-inset-top)); }
-.brand { font-family: var(--f-mono); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em; flex-shrink: 0; }
-.brand span { color: var(--accent); }
+nav.stuck {
+  border-color: var(--line);
+  padding-block: var(--sp-3);
+  padding-top: max(var(--sp-3), env(safe-area-inset-top));
+  box-shadow: var(--shadow-soft);
+}
+.brand {
+  font-family: var(--f-mono); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em; flex-shrink: 0;
+  transition: transform .4s var(--ease-out-quint);
+}
+.brand:hover { transform: scale(1.03); }
+.brand span {
+  color: var(--accent);
+  transition: color .3s, text-shadow .3s;
+}
+.brand:hover span { text-shadow: 0 0 20px color-mix(in oklch, var(--accent) 40%, transparent); }
 
 .nav-toggle {
   display: none; align-items: center; justify-content: center;
@@ -31,6 +44,8 @@ nav.stuck { border-color: var(--line); padding-block: var(--sp-3); padding-top: 
 }
 .nav-links a:hover { color: var(--ink); }
 .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after { transform: scaleX(1); transform-origin: left; }
 
 @media (max-width: 720px) {
   .nav-toggle { display: inline-flex; z-index: 102; }

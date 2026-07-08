@@ -9,6 +9,7 @@
   --line-strong: oklch(80% 0.016 60);
   --accent: oklch(59% 0.202 34);
   --accent-deep: oklch(48% 0.17 32);
+  --accent-glow: oklch(72% 0.16 40);
   --forest: oklch(46% 0.083 168);
   --forest-soft: oklch(62% 0.07 168);
 
@@ -18,7 +19,17 @@
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
   --sp-6: 24px; --sp-8: 32px; --sp-12: 48px; --sp-16: 64px; --sp-24: 96px;
+
+  --shadow-soft: 0 12px 40px -16px oklch(23% 0.024 58 / 0.18);
+  --shadow-lift: 0 20px 50px -20px oklch(23% 0.024 58 / 0.35);
+  --shadow-glow: 0 0 40px -8px color-mix(in oklch, var(--accent) 40%, transparent);
+
+  --blob-a-y: 0px;
+  --blob-b-y: 0px;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
 }
